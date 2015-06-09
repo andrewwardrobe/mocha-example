@@ -1,4 +1,8 @@
-var assert = require("assert");
+document = jsdom("<html><head></head><body><div id=\"leek\">leek</div></body></html>");
+
+global.window = document.parentWindow;
+
+var $ = require("jquery");     //since we made the global window we dont need to pass the window in to jquery
 
 
 describe ('Array', function (){
@@ -18,20 +22,46 @@ describe('Array', function(){
   });
 });
 
-describe('Array', function(){
-  describe('#indexOf()', function(){
-    console.log("hello");
-    it('should twat', function(){
+describe('Leek', function(){
+  describe('JS Test Framework', function(){
+
+    it('should be able to call function with underlying jquery', function(){
         console.log("hello");
+
         var leek = requirejs("leek");
-        var jsdom = require('jsdom').jsdom;
-        var document = jsdom('<html><head><script></script></head><body></body></html>');
-        var window = document.createWindow();
-        var  $ = require("jquery").create(window);
         var text = leek.test("sheek");
-        assert.equal(text,"leek sheek" );
+
+        var jimbo = $("#leek").text();
+        assert.equal(jimbo,"leek sheek" );
+    });
+
+    it("be able to stub a function",function(){
+
+        var stub = sinon.stub(global.jsRoutes.controllers.Application, "leek");
+        stub.returns("Andrew Wardrobe");
+
+        var leek = requirejs("leek");
+        leek.jsRoutesTest();
+        var actualOutput = $("#leek").text();
+
+        assert.equal(actualOutput,"Andrew Wardrobe" );
     });
   });
+
+  describe('Reloading', function(){
+      it('should reset the doc without breaking jquery', function(){
+
+        document = jsdom("<html><head></head><body><div id=\"leek\">leek</div></body></html>");
+        var jimbo = document.getElementById("leek").textContent;
+        var leek = requirejs("leek");
+        assert.equal(jimbo,"leek" );
+
+        [1,2,3].indexOf(5).should.equal(-1);
+        [1,2,3].indexOf(0).should.equal(-1);
+      });
+    });
+
+
 });
 
 describe('Array', function(){

@@ -25,3 +25,5 @@ libraryDependencies ++= Seq(
 )
 
 MochaKeys.requires += "./Setup"
+
+JsEngineKeys.engineType := JsEngineKeys.EngineType.Node

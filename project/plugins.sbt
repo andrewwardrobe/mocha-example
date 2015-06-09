@@ -2,6 +2,7 @@
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.3.6")
 
 // web plugins
+addSbtPlugin("com.typesafe.sbt" % "sbt-js-engine" % "1.0.2")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-coffeescript" % "1.0.0")
 
