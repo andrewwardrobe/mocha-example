@@ -1,10 +1,3 @@
-document = jsdom("<html><head></head><body><div id=\"leek\">leek</div></body></html>");
-
-global.window = document.parentWindow;
-
-var $ = require("jquery");     //since we made the global window we dont need to pass the window in to jquery
-
-
 describe ('Array', function (){
     describe ('#indexOf()', function(){
          it('should return -1 when the value is not present', function(){
