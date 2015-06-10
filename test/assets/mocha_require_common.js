@@ -11,11 +11,6 @@
             "jquery":"lib/jquery/jquery",
             "leek":"javascripts/leek",
             "sheek":"javascripts/sheek"
-        },
-        shim:{
-            jquery:{
-                "exports":"$"
-            }
         }
     });
 
