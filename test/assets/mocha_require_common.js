@@ -9,9 +9,19 @@
             "bootstrap" : "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min",
             "jsRoutes" : "javascriptRoutes",
             "jquery":"lib/jquery/jquery",
-            "leek":"javascripts/leek",
-            "sheek":"javascripts/sheek"
-        }
+            "puff":"javascripts/puff",
+             "q" : "lib/q/q"
+        },
+
+        packages:[{
+            "name":"cheerio",
+            "main":"index",
+            "location":"lib/cheerio"
+        },{
+            "name":"jsdom",
+            "main":"jsdom",
+            "location":"lib/node-jsdom/lib"
+        }]
     });
 
     requirejs.onError = function(err) {

@@ -1,4 +1,4 @@
-define ['common','jquery','sheek'],(common,$,sheek) -> {
+define ['common','q'],(common,Q) -> {
         test:(word)->
             leek =  jsRoutes.controllers.Application
             $("#leek").text "leek "+word
@@ -6,5 +6,9 @@ define ['common','jquery','sheek'],(common,$,sheek) -> {
         jsRoutesTest:()->
             leek = jsRoutes.controllers.Application.leek();
             $("#leek").text leek
+        nockTest:()->
+            Q.when $.get sitebase + "/leek"
+
 
     }
+

@@ -1,67 +1,76 @@
-describe ('Array', function (){
-    describe ('#indexOf()', function(){
-         it('should return -1 when the value is not present', function(){
-              assert.equal(true,true);
+describe('Javascript Unit Testing', function(){
+
+
+  describe('Examples', function(){
+    var service;
+
+    before(function(){
+    });
+
+    after(function(){
+        nock.restore();
+        nock.cleanAll();
+    });
+
+    beforeEach(function(){
+        $("body").append("<div id=\"leek\">leek</div>");
+        service = nock(sitebase).get('/leek')
+                                .reply(200,{
+                                     leek:"sheek",
+                                     meek:"bleek"
+                                 });
+    });
+
+    afterEach(function(){
+        $("#leek").remove();
+    });
+
+    it('testing DOM inserts from jQuery',function(done){
+            var leek = requirejs('leek');
+            var result = leek.nockTest();
+            result.then(function(data){
+                $("#leek").text(data.leek);
             });
+
+            return result.should.be.fulfilled.then(function(){
+                expect($("#leek")).to.have.$text("sheek");
+            }).should.notify(done);
     });
-});
 
-describe('Array', function(){
-  describe('#indexOf()', function(){
-    it('should leeeeeeeeek', function(){
-      assert.equal(-1, [1,2,3].indexOf(5));
-      assert.equal(-1, [1,2,3].indexOf(0));
+    it('testing Ajax with promises',function(done){
+        var leek = requirejs('leek');
+        var result = leek.nockTest();
+
+        return expect(result).to.eventually
+                 .have.property('leek',"sheek")
+                 .notify(done);
     });
-  });
-});
 
-describe('Leek', function(){
-  describe('JS Test Framework', function(){
-
-    it('should be able to call function with underlying jquery', function(){
-        console.log("hello");
-
+    it('Testing an requirejs module that uses jQuery', function(){
         var leek = requirejs("leek");
         var text = leek.test("sheek");
 
-        var jimbo = $("#leek").text();
-        assert.equal(jimbo,"leek sheek" );
+        var result = $("#leek").text();
+        assert.equal(result,"leek sheek" );
     });
 
-    it("be able to stub a function",function(){
-
+    it("stubing out jsRoutes",function(){
+        //I have a jsfile with a empty js routes structure
         var stub = sinon.stub(global.jsRoutes.controllers.Application, "leek");
         stub.returns("Andrew Wardrobe");
 
         var leek = requirejs("leek");
         leek.jsRoutesTest();
-        var actualOutput = $("#leek").text();
 
+        var actualOutput = $("#leek").text();
         assert.equal(actualOutput,"Andrew Wardrobe" );
     });
+
+     it('making sure before and after work', function(){
+            var jimbo = $("#leek").text();
+            assert.equal(jimbo,"leek" );
+     });
+
   });
 
-  describe('Reloading', function(){
-      it('should reset the doc without breaking jquery', function(){
-
-        document = jsdom("<html><head></head><body><div id=\"leek\">leek</div></body></html>");
-        var jimbo = document.getElementById("leek").textContent;
-        var leek = requirejs("leek");
-        assert.equal(jimbo,"leek" );
-
-        [1,2,3].indexOf(5).should.equal(-1);
-        [1,2,3].indexOf(0).should.equal(-1);
-      });
-    });
-
-
-});
-
-describe('Array', function(){
-  describe('#indexOf()', function(){
-    it('should jimbo jambo', function(){
-      [1,2,3].indexOf(5).should.equal(-1);
-      [1,2,3].indexOf(0).should.equal(-1);
-    });
-  });
 });
