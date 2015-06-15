@@ -1,6 +1,5 @@
 define ['common','q'],(common,Q) -> {
         test:(word)->
-            leek =  jsRoutes.controllers.Application
             $("#leek").text "leek "+word
             return "leek " +word
         jsRoutesTest:()->

@@ -41,8 +41,7 @@ describe('Javascript Unit Testing', function(){
         var leek = requirejs('leek');
         var result = leek.nockTest();
 
-        return expect(result).to.eventually
-                 .have.property('leek',"sheek")
+        return expect(result).to.eventually.have.property('leek',"sheek")
                  .notify(done);
     });
 
